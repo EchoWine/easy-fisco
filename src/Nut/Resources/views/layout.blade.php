@@ -21,7 +21,6 @@
         <div class="page-loader">
             <div class="loading">
                 <div class="loading-spin"></div>
-                <span>Loading...</span>
             </div>
         </div>
 
@@ -67,7 +66,7 @@
             App.addProviders({loader})
 
             $(document).ready(function() {
-                App.init();
+                 App.init();
             });
         </script>
 
