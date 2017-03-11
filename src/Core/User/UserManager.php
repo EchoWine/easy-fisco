@@ -140,6 +140,7 @@ class UserManager
  
         $user = new User();
         $user->name=$params['username'];
+        $params['password'] = bcrypt($params['password']);
         $user->fill($params);
         $user->save();
 
