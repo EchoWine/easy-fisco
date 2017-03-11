@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         EchoWine\Laravel\App\AppServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
     ],
 
