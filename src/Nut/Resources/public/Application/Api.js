@@ -179,8 +179,6 @@ Api.prototype.call = function(method, url, params, callback){
 		headers['Authorization'] = 'Bearer '+this.getToken();
 	}
 
-
-
 	var call = {
 		type: method,
 		url: this.getUrl()+url, 
@@ -192,6 +190,7 @@ Api.prototype.call = function(method, url, params, callback){
 		error: function(jqXHR, textStatus, errorThrown) {
 
 			console.log('Error during call: '+url);
+			console.log(jqXHR);
 
 			if(jqXHR && jqXHR.responseJSON){
 				console.log(jqXHR.responseJSON);
@@ -203,8 +202,6 @@ Api.prototype.call = function(method, url, params, callback){
 		headers: headers
 	};
 
-
-	console.log(call);
 	
 	return $.ajax(call);
 };

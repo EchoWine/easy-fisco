@@ -3,10 +3,10 @@
 namespace Nut\Http\Controllers;
 use Request;
 
-class WelcomeController extends Controller{
+class DashboardController extends Controller{
    
 	public function index(Request $request){
-		return view('Nut::welcome');
+		return view('Nut::dashboard');
 	}
 
 }

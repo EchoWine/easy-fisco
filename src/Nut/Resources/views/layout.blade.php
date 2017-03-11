@@ -46,12 +46,14 @@
             App.getApi().setClientId("{{ env('API_CLIENT_ID') }}");
             App.getApi().setClientSecret("{{ env('API_CLIENT_SECRET') }}");
             App.getApi().updateTokenFromStorage();
+            App.setRoute("/{{ Route::current()->uri }}");
 
 
         </script>
 
         <!-- Authentication -->
         <script src="{{ asset('src/Nut/Auth/AuthServiceProvider.js') }}"></script>
+        <script src="{{ asset('src/Nut/Auth/AuthService.js') }}"></script>
         <script src="{{ asset('src/Nut/Auth/AuthManager.js') }}"></script>
         <script src="{{ asset('src/Nut/Auth/AuthEvent.js') }}"></script>
 
@@ -69,13 +71,33 @@
 
         @show
 
+        <!-- Sort of middleware -->
+        <script>
+            var middleware = function() {
+                this.name = 'middleware';
+                this.initialize = function(self, next) {
+
+                    if(App.getRoute() != "/login" && !App.get('auth').getUser()) {
+                        App.redirectTo("/login");
+                    }
+
+                    next();
+                };
+            };
+
+            App.addProviders({middleware});
+        </script>
+
+
         <!-- Loader -->
         <script>
             var loader = function() {
                 this.name = 'loader';
-                this.initialize = function(next) {
+                this.initialize = function(self, next) {
 
                     $('.page-loader').remove();
+
+                    next();
                 };
             };
 

@@ -3,7 +3,8 @@ var AuthManager = function() {
 
 };
 
-AuthManager.prototype.login = function(params) {
+AuthManager.prototype.login = function(params)
+{
 
 	if(!params.username || !params.password)
 		return;
@@ -17,7 +18,36 @@ AuthManager.prototype.login = function(params) {
 
 		if(response.access_token) {
 			App.getApi().persistToken(response.access_token);
+			App.redirectTo("/");
 		}
 	});
 
 };
+
+AuthManager.prototype.authenticate = function(success, error) 
+{
+	if(App.getApi().getToken()){
+		App.getApi().call('GET', '/user/profile', {}, function(response) {
+
+			if(response.status == 'success') {
+
+				App.get('auth').setUser(response.data);
+
+				if(success)
+					success();
+
+			}else{
+					
+				if(error)
+					error();
+			}
+
+		});
+
+	}else{
+
+		if(error)
+			error();
+	}
+
+}

@@ -22,6 +22,20 @@ var AuthServiceProvider = function(){
 AuthServiceProvider.prototype.initialize = function(self, next)
 {
 	
-	next();
+	App.addService('auth', new AuthService);
+	
+	var au = new AuthManager();
+
+	au.authenticate(
+		function() {
+			next();
+		},
+		function() {
+
+
+			next();
+		}
+	);
+
 		
 };

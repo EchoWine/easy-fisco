@@ -3,17 +3,7 @@
 
 @section('scripts')
     
-    <script src="{{ asset('src/Nut/Auth/AuthServiceProvider.js') }}"></script>
-    <script src="{{ asset('src/Nut/Auth/AuthManager.js') }}"></script>
-    <script src="{{ asset('src/Nut/Auth/AuthEvent.js') }}"></script>
 
-    <script>
-
-        App.addProviders([
-            AuthServiceProvider,
-        ]);
-
-    </script>
 
 @endsection
 

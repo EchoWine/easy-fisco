@@ -24,7 +24,21 @@ var Application = function(){
 	this.client = new Client();
 
 	/**
-	 * Get provider
+	 * Current route
+	 *
+	 * @var {string}
+	 */
+	this.route = null;
+
+	/**
+	 * List of all services
+	 *
+	 * @var {Array}
+	 */
+	this.services = [];
+
+	/**
+	 * Get service
 	 *
 	 * @param {string} name
 	 *
@@ -33,14 +47,13 @@ var Application = function(){
 	this.get = function(name)
 	{
 
-		var provider;
 
-		for(index in this.providers) {
+		for(index in this.services) {
 
-			provider = this.providers[index];
+			service = this.services[index];
 
-			if(provider.name == name) {
-				return provider.provider;
+			if(service.name == name) {
+				return service;
 			}
 		}
 
@@ -64,6 +77,22 @@ Application.prototype.addProvider = function(name, provider)
 		provider: provider
 	});
 };
+
+/**
+ * Add a provider
+ *
+ * @param {string} name
+ * @param {closure} service
+ *
+ * @return this
+ */
+Application.prototype.addService = function(name, service)
+{
+	this.services.push(service);
+
+	return this;
+};
+
 
 /**
  * Add a providers
@@ -109,6 +138,9 @@ Application.prototype.executeProviders = function()
 Application.prototype.executeProvider = function(index)
 {
 
+	console.log("Executing ", index);
+	console.log(this.providers);
+	
 	var self = this;
 
 	if(this.providers[index] == undefined)
@@ -116,9 +148,9 @@ Application.prototype.executeProvider = function(index)
 
 	var provider = this.providers[index].provider;
 
-
 	// Send a callback to execute the next provider when the service has ended execution
 	provider.initialize(provider, function(){
+	
 		self.executeProvider(index+1);
 	});
 
@@ -163,3 +195,52 @@ Application.prototype.display = function()
 {
 
 };
+
+
+/**
+ * Set route
+ *
+ * @param {string} url
+ *
+ * @return {this}
+ */
+Application.prototype.setRoute = function(route)
+{
+	this.route = route;
+
+	return this;
+};
+
+/**
+ * Get route
+ *
+ * @return {string}
+ */
+Application.prototype.getRoute = function()
+{
+	return this.route;
+};
+
+/**
+ * Is route
+ *
+ * @param {string} route
+ *
+ * @return boolean
+ */
+Application.prototype.isRoute = function(route)
+{
+	return this.getRoute() == route;
+};
+
+/**
+ * Redirect to
+ *
+ * @param {string}
+ *
+ * @return void
+ */
+Application.prototype.redirectTo = function(url)
+{
+	return window.location.href = url;
+}
