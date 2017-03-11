@@ -45,7 +45,9 @@
             $(document).ready(function(){
 
                 App.getApi().setUrl("{{ env('API_URL') }}");
-                App.getApi().setToken("");
+                App.getApi().setClientId("{{ env('API_CLIENT_ID') }}");
+                App.getApi().setClientSecret("{{ env('API_CLIENT_SECRET') }}");
+                App.getApi().updateTokenFromStorage();
 
                 App.init();
 

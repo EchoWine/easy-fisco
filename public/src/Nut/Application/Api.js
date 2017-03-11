@@ -8,6 +8,20 @@ var Api = function(){
 	this.token = null;
 
 	/**
+	 * Client ID
+	 *
+	 * @var {string
+	 */
+	this.client_id = null;
+
+	/**
+	 * Client Secret
+	 *
+	 * @var {string}
+	 */
+	this.client_secret = null;
+
+	/**
 	 * Api URL
 	 *
 	 * @var {string}}
@@ -39,6 +53,55 @@ Api.prototype.getToken = function()
 	return this.token;
 };
 
+
+/**
+ * Set the client id
+ *
+ * @param {string} client_id
+ *
+ * @return this
+ */
+Api.prototype.setClientId = function(client_id)
+{
+	this.client_id = client_id;
+
+	return this;
+};
+
+/**
+ * Get client id
+ *
+ * @return {string}
+ */
+Api.prototype.getClientId = function()
+{
+	return this.client_id;
+}
+
+/**
+ * Set the client secret
+ *
+ * @param {string} client_secret
+ *
+ * @return this
+ */
+Api.prototype.setClientSecret = function(client_secret)
+{
+	this.client_secret = client_secret;
+
+	return this;
+};
+
+/**
+ * Get client id
+ *
+ * @return {string}
+ */
+Api.prototype.getClientSecret = function()
+{
+	return this.client_secret;
+}
+
 /**
  * Set the url
  *
@@ -64,6 +127,41 @@ Api.prototype.getUrl = function()
 };
 
 /**
+ * Persist the token
+ *
+ * @param token
+ *
+ * @return void
+ */
+Api.prototype.persistToken = function(token)
+{	
+	this.setToken(token);
+	this.updateTokenToStorage(token);
+};
+
+/**
+ * Persist the token
+ *
+ * @param token
+ *
+ * @return void
+ */
+Api.prototype.updateTokenToStorage = function(token)
+{	
+	App.getClient().getCookies().set('token', token);
+};
+
+/**
+ * Persist the token
+ *
+ * @return string
+ */
+Api.prototype.updateTokenFromStorage = function()
+{	
+	this.setToken(App.getClient().getCookies().get('token'));
+};
+
+/**
  * Make a call to api
  *
  * @param {string} method
@@ -80,6 +178,8 @@ Api.prototype.call = function(method, url, params, callback){
 	if(this.getToken() != null){
 		headers['Authorization'] = 'Bearer '+this.getToken();
 	}
+
+
 
 	var call = {
 		type: method,
@@ -104,5 +204,7 @@ Api.prototype.call = function(method, url, params, callback){
 	};
 
 
+	console.log(call);
+	
 	return $.ajax(call);
 };

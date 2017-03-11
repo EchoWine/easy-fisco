@@ -9,3 +9,7 @@ var Client = function() {
 };
 
 
+Client.prototype.getCookies = function()
+{
+	return this.cookies;
+}
