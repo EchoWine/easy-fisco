@@ -42,24 +42,36 @@
 
             var App = new Application();
 
-            $(document).ready(function(){
+            App.getApi().setUrl("{{ env('API_URL') }}");
+            App.getApi().setClientId("{{ env('API_CLIENT_ID') }}");
+            App.getApi().setClientSecret("{{ env('API_CLIENT_SECRET') }}");
+            App.getApi().updateTokenFromStorage();
 
-                App.getApi().setUrl("{{ env('API_URL') }}");
-                App.getApi().setClientId("{{ env('API_CLIENT_ID') }}");
-                App.getApi().setClientSecret("{{ env('API_CLIENT_SECRET') }}");
-                App.getApi().updateTokenFromStorage();
-
-                App.init();
-
-                $('.page-loader').remove();
-
-            });
 
         </script>
+
+        <!-- Load all Service Providers -->
         @section('scripts')
 
         @show
 
+        <script>
+            var loader = function() {
+                this.name = 'loader';
+                this.initialize = function(next) {
+
+                    $('.page-loader').remove();
+                };
+            };
+            
+            App.addProviders({loader})
+
+            $(document).ready(function(){
+
+
+                App.init();
+            });
+        </script>
 
     </body>
 </html>
