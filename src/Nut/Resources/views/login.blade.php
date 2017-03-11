@@ -23,25 +23,24 @@
 @endsection
 
 @section('body')
-<div class="wrapper">
-    <form class="form-signin" id='form-login' method='POST'>       
-    <h2 class="form-signin-heading">Please login</h2>
 
-        <div>
-            <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-        </div>
-
-        <div>
-            <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
-        </div>
-        <!--<label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-        </label>
-        -->
-        <div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
-        </div>
-    </form>
+<div class="login-page">
+    <div class="form">
+        <form class="register-form">
+            <input type="text" name='username' placeholder="name"/>
+            <input type="password" name='password' placeholder="password"/>
+            <input type="password" name='password_repeat' placeholder="password x2"/>
+            <input type="text" name='email' placeholder="email address"/>
+            <button>create</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>
+        <form class="login-form">
+            <input type="text" name='username' placeholder="username"/>
+            <input type="password" name='password' placeholder="password"/>
+            <button type='submit'>login</button>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+        </form>
+    </div>
 </div>
 @endsection
 

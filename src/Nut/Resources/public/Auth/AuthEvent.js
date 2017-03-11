@@ -1,4 +1,4 @@
-$('#form-login').on('submit', function(e) {
+$('#login-form').on('submit', function(e) {
 	e.preventDefault();
 
 	var params = {
@@ -12,4 +12,8 @@ $('#form-login').on('submit', function(e) {
 	au.login(params);
 
 
+});
+
+$('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
