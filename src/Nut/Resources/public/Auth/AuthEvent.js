@@ -1,4 +1,4 @@
-$('#login-form').on('submit', function(e) {
+$('.login-form').on('submit', function(e) {
 	e.preventDefault();
 
 	var params = {
@@ -6,7 +6,6 @@ $('#login-form').on('submit', function(e) {
 		password: $(this).find("[name='password']").val()
 	};
 
-	console.log(params);
 
 	var au = new AuthManager();
 	au.login(params);

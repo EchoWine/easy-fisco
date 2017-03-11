@@ -37,6 +37,7 @@
         <script src="{{ asset('src/Nut/Application/Client.js') }}"></script>
         <script src="{{ asset('src/Nut/Application/Cookies.js') }}"></script>
 
+        <!-- Main Application -->
         <script>
 
             var App = new Application();
@@ -49,11 +50,26 @@
 
         </script>
 
+        <!-- Authentication -->
+        <script src="{{ asset('src/Nut/Auth/AuthServiceProvider.js') }}"></script>
+        <script src="{{ asset('src/Nut/Auth/AuthManager.js') }}"></script>
+        <script src="{{ asset('src/Nut/Auth/AuthEvent.js') }}"></script>
+
+        <script>
+
+            App.addProviders([
+                AuthServiceProvider,
+            ]);
+
+        </script>
+
+
         <!-- Load all Service Providers -->
         @section('scripts')
 
         @show
 
+        <!-- Loader -->
         <script>
             var loader = function() {
                 this.name = 'loader';
@@ -63,7 +79,11 @@
                 };
             };
 
-            App.addProviders({loader})
+            App.addProviders({loader});
+        </script>
+
+        <!-- Initialize -->
+        <script>
 
             $(document).ready(function() {
                  App.init();
