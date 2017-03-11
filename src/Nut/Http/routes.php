@@ -9,4 +9,4 @@
 |
 */
 
-Route::get('/nut', ['as' => 'nut.index','uses' => 'WelcomeController@index']);
+Route::get('/login', ['as' => 'nut.index','uses' => 'Auth\LoginController@index']);
