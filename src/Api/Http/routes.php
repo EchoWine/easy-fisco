@@ -9,4 +9,4 @@
 |
 */
 
-Route::get('/api/v1', ['as' => 'api.index','uses' => 'WelcomeController@index']);
+Route::post('/register', ['uses' => 'Auth\RegistrationController@index']);
