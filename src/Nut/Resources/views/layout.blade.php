@@ -63,12 +63,10 @@
                     $('.page-loader').remove();
                 };
             };
-            
+
             App.addProviders({loader})
 
-            $(document).ready(function(){
-
-
+            $(document).ready(function() {
                 App.init();
             });
         </script>
