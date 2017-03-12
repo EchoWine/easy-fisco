@@ -92,13 +92,3 @@
 .container .info span .fa {
     color: #EF3B3A;
 }
-body {
-    background: #9397cd; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #9397cd, #adb1e6);
-    background: -moz-linear-gradient(right, #9397cd, #adb1e6);
-    background: -o-linear-gradient(right, #9397cd, #adb1e6);
-    background: linear-gradient(to left, #9397cd, #adb1e6);
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;            
-}

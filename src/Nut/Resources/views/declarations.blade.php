@@ -12,7 +12,7 @@
 
 @section('content')
 	
-	<h1> Dashboard </h1>
+	<h1> Dichiarazione dei redditi </h1>
 
 @endsection
 

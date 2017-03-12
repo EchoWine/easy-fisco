@@ -1,11 +1,11 @@
 <?php
 
-namespace Nut\Http\Controllers\Dashboard;
+namespace Nut\Http\Controllers\Data;
 
 use Nut\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class DeclarationsController extends Controller
 {
 
 	/**
@@ -17,7 +17,7 @@ class DashboardController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		return view('Nut::dashboard');
+		return view('Nut::declarations');
 	}
 
 }

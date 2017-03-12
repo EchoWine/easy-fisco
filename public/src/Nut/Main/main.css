@@ -1,0 +1,128 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+html, body {
+	height: 100%;
+}
+
+body {
+    background: #505061;       
+}
+
+.page-loader{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: #505061;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+}
+.loading {
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+}
+.loading-spin {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+ }
+
+
+header {
+	display:flex;
+	align-items: center;
+    height: 61px;
+    background: #6a6f7c;
+    font-size: 12px;
+    position: relative;
+    z-index: 100;
+}
+
+.header-logo-col {
+    background: #505061;
+    height: 100%;
+	padding: 0;
+}
+
+.nav a {
+	display: block;
+    padding: 12px 8px;
+    color: #e0e3ec;
+    text-decoration: none;
+}
+
+header .nav a {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.nav-left a {
+	padding: 4px 8px;
+}
+
+.nav-left a span {
+	margin-right: 5px;
+	opacity: 0.6;
+}
+
+.logo {
+	color: white !important;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	text-decoration: none !important;
+}
+
+.logo .fa {
+	margin-right: 5px;
+	font-size: 18px;
+}
+
+.page-left {
+	max-width: 180px;
+}
+
+.page-content {
+	width: 100%;
+	max-width: none;
+	flex-grow: 1;
+}
+
+.content {
+	background: white;
+	padding: 10px 15px;
+}
+
+.page, .page > div, .page > div > div {
+	min-height: 100%;
+	height: 100%;
+}
